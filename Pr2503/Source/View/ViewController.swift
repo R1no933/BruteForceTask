@@ -1,7 +1,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    //MARK: - Outlets
+
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var bruteButton: UIButton!
+    
+    //MARK: - Properties
     
     var isBlack: Bool = false {
         didSet {
@@ -13,18 +22,24 @@ class ViewController: UIViewController {
         }
     }
     
+    //MARK: - Actions
+    
     @IBAction func onBut(_ sender: Any) {
         isBlack.toggle()
     }
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        self.bruteForce(passwordToUnlock: "1!gr")
+        //self.bruteForce(passwordToUnlock: "1!gr")
         
         // Do any additional setup after loading the view.
     }
+    
+    //MARK: - BruteForce funcs
     
     func bruteForce(passwordToUnlock: String) {
         let ALLOWED_CHARACTERS:   [String] = String().printable.map { String($0) }
@@ -44,6 +59,7 @@ class ViewController: UIViewController {
 }
 
 
+//MARK: - Extensions
 
 extension String {
     var digits:      String { return "0123456789" }
